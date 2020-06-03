@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/krati1711/NodeJS#readme",
   "devDependencies": {
+    "init": "^0.1.2",
     "nodemon": "^2.0.4"
   },
   "dependencies": {
