@@ -1,24 +1,7 @@
 const http = require('http');
-const express = require('express');
-const bodyParser = require('body-parser');
-const path = require('path');
+const routes = require('./routes.js');
 
-const app = express();
-const adminRoutes = require('./routes/admin');
-const shopRoutes = require('./routes/shop');
+console.log(routes.someText);
 
-app.use(bodyParser.urlencoded());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/admin', adminRoutes);
-app.use(shopRoutes);
-
-app.use((req, res, next) => {
-    //res.status(404).send('<h1> Page not found </h1>');
-    res.status(404).sendFile(path.join(__dirname, 'views', '404.html'));
-});
-
-app.listen(3000);
-// alternative for above code
-//const server = http.createServer(app);
-//server.listen(3000);
+const server = http.createServer(routes.handler);
+server.listen(3000);
